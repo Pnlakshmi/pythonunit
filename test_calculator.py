@@ -160,5 +160,70 @@ class TestCalculatorFactorial(unittest.TestCase):
             self.calc.factorial(3.5)
 
 
+class TestCalculatorAddExtended(unittest.TestCase):
+    """Extended tests for the add method."""
+
+    def setUp(self):
+        self.calc = Calculator()
+
+    def test_add_large_numbers(self):
+        self.assertEqual(self.calc.add(1000000, 2000000), 3000000)
+
+    def test_add_float_and_integer(self):
+        self.assertAlmostEqual(self.calc.add(1.5, 2), 3.5)
+
+
+class TestCalculatorSubtractExtended(unittest.TestCase):
+    """Extended tests for the subtract method."""
+
+    def setUp(self):
+        self.calc = Calculator()
+
+    def test_subtract_from_itself(self):
+        self.assertEqual(self.calc.subtract(42, 42), 0)
+
+    def test_subtract_large_numbers(self):
+        self.assertEqual(self.calc.subtract(1000000, 999999), 1)
+
+
+class TestCalculatorDivideExtended(unittest.TestCase):
+    """Extended tests for the divide method."""
+
+    def setUp(self):
+        self.calc = Calculator()
+
+    def test_divide_one_by_one(self):
+        self.assertEqual(self.calc.divide(1, 1), 1)
+
+    def test_divide_returns_float(self):
+        self.assertIsInstance(self.calc.divide(5, 2), float)
+
+
+class TestCalculatorMultiplyExtended(unittest.TestCase):
+    """Extended tests for the multiply method."""
+
+    def setUp(self):
+        self.calc = Calculator()
+
+    def test_multiply_by_one(self):
+        self.assertEqual(self.calc.multiply(99, 1), 99)
+
+    def test_multiply_floats(self):
+        self.assertAlmostEqual(self.calc.multiply(2.5, 4.0), 10.0)
+
+
+class TestCalculatorFactorialExtended(unittest.TestCase):
+    """Extended tests for the factorial method."""
+
+    def setUp(self):
+        self.calc = Calculator()
+
+    def test_factorial_ten(self):
+        self.assertEqual(self.calc.factorial(10), 3628800)
+
+    def test_factorial_returns_integer(self):
+        self.assertIsInstance(self.calc.factorial(5), int)
+
+
 if __name__ == "__main__":
     unittest.main()
